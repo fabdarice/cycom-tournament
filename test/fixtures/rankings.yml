@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  tournament_id: 1
+  round: 1
+  win_points: 1
+  draw_points: 1
+  lose_points: 1
+  groups_number: 1
+  qualified: 1
+  games_number: 1
+  state: MyString
+  best_of: 1
+
+two:
+  tournament_id: 1
+  round: 1
+  win_points: 1
+  draw_points: 1
+  lose_points: 1
+  groups_number: 1
+  qualified: 1
+  games_number: 1
+  state: MyString
+  best_of: 1

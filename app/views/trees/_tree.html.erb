@@ -1,0 +1,24 @@
+<table class="tree" id="<%= type %>">
+    <% tree.each do |line| -%>
+      <tr>
+	<% line.each do |column| -%>
+	  <td
+	     <% if column == true -%>
+	       class="tree_line"
+	     <% elsif column.nil?-%>
+	       class="tree_empty"
+	     <% elsif column.class.name == "TreePosition"-%>
+	       class="tree_participant"
+	     <% end -%>>
+	    <% unless column.nil? -%>
+	      <% if column.class.name == "TreePosition" -%>
+		<%= column.participant if column.participant_id %>
+	      <% elsif column.class.name == "Game" -%>
+		<%= render :partial => "games/tree_game", :object => column %>
+	      <% end -%>
+	    <% end -%>
+	  </td>
+	<% end -%>
+      </tr>
+    <% end -%>
+</table>

@@ -1,0 +1,12 @@
+INSTALL
+
+  gem install bundler
+  bundle install
+  rails s
+
+IMPORTANT (update to rails 3 beta 4)
+
+You need to update bundler
+  gem update bundler
+
+And obviously: bundle install

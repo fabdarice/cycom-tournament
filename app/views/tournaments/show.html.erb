@@ -1,0 +1,86 @@
+<%= action_box do %>
+	<% if @tournament.has_subscriber? session[:user_id] -%>
+		<li><%= link_to t("tournament.leave"), { :controller => :subscriptions,
+					:action => :destroy, :tournament_id => @tournament.id },
+   					:method => "delete" %></li>
+	<% end %>
+	<% if admin? %>
+		<li><%= link_to t("tournament.edit"), edit_tournament_path(@tournament),
+					:class => "admin" %></li>
+		<li><%= link_to t("ranking.add"), { :controller => :rankings,
+   					:action => :new, :tournament_id => @tournament.id, :round => @tournament.next_round },
+					:class => "admin" %></li>
+		<li><%= link_to t("tournament.start"), { :controller => :tournaments,
+					:action => :start, :id => @tournament.id },
+					:class => "admin" %></li>	
+		<li><%= link_to t("tree.add"), { :controller => :trees,
+   					:action => :new, :tournament_id => @tournament.id },
+					:class => "admin" %></li>
+	<% end %>
+<% end %>
+
+<p>
+  <b><%= t "activerecord.attributes.tournament.event_id" %>:</b>
+  <%=h @tournament.event_id %>
+</p>
+
+<p>
+  <b><%= t "activerecord.attributes.tournament.branch_id" %>:</b>
+  <%=h @tournament.branch_id %>
+</p>
+
+<p>
+  <b><%= t "activerecord.attributes.tournament.name" %>:</b>
+  <%=h @tournament.name %>
+</p>
+
+<p>
+  <b><%= t "activerecord.attributes.tournament.max_participants" %>:</b>
+  <%=h @tournament.max_participants %>
+</p>
+
+<p>
+  <b><%= t "activerecord.attributes.tournament.participants_type" %>:</b>
+  <%=h @tournament.participants_type %>
+</p>
+
+<p>
+  <b><%= t "activerecord.attributes.tournament.starts_at" %>:</b>
+  <%=h @tournament.starts_at %>
+</p>
+
+<p>
+  <b><%= t "activerecord.attributes.tournament.ends_at" %>:</b>
+  <%=h @tournament.ends_at %>
+</p>
+
+<p>
+  <b><%= t "activerecord.attributes.tournament.state" %>:</b>
+  <%=h @tournament.state %>
+</p>
+
+<%= render :partial => "subscriptions/new", :locals => { :tournament => @tournament } %>
+
+<% if @tournament.is_individual? -%>
+	<% unless @tournament.users.empty? %>
+		<%= h2 "Liste des inscrits" %>
+
+	  	<ul>
+			<% @tournament.users.each do |user| %>
+				<li><%= link_to user.nickname, user_path(user) %></li>
+			<% end %>
+		</ul>
+	<% end %>
+<% else %>
+	<% unless @users.empty? %>
+  		<%= h2 "Liste des inscrits" %>
+
+  		<ul>
+			<% @users.each_key do |team| %>
+				<li>
+	  				<%= link_to team.name, team_path(team) %> (<%= "#{@users[team].to_sentence}" %>)
+				</li>
+			<% end %>
+  		</ul>
+	<% end %>
+<% end %>

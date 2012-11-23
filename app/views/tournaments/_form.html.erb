@@ -1,0 +1,14 @@
+<% form_for(@tournament) do |f| %>
+  <%= render 'shared/error_messages', :target => @tournament %>
+
+  <%= f.select :event_id, Event.all.collect {|e| [ e.name, e.id ] } %>
+  <%= f.select :branch_id, Branch.all.collect { |b| [ b.name, b.id ] } %>
+  <%= f.text_field :name %>
+  <%= f.text_field :max_participants %>
+  <%= f.select :participants_type, Tournament::PARTICIPANTS_TYPE %>
+  <%= f.datetime_select :starts_at %>
+  <%= f.datetime_select :ends_at %>
+  <%= f.hidden_field :state %>
+
+  <%= f.submit @tournament.new_record? ? t("validate.new") : t("validate.edit") %>
+<% end %>

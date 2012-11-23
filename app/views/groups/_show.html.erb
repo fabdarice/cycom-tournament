@@ -1,0 +1,35 @@
+<table class="group" id="group">
+  <tr>
+    <th></th>
+    <th class="group_name"><%= t "activerecord.attributes.ranking_line.name" %></th>
+    <th><%= t "activerecord.attributes.ranking_line.name" %></th>
+    <th><%= t "activerecord.attributes.ranking_line.played" %></th>
+    <th><%= t "activerecord.attributes.ranking_line.win" %></th>
+    <th><%= t "activerecord.attributes.ranking_line.draw" %></th>
+    <th><%= t "activerecord.attributes.ranking_line.lose" %></th>
+    <th><%= t "activerecord.attributes.ranking_line.plus" %></th>
+    <th><%= t "activerecord.attributes.ranking_line.minus" %></th>
+    <th><%= t "activerecord.attributes.ranking_line.diff" %></th>
+  </tr>
+  <%
+    pos = 1
+	reset_cycle('group_lines')
+    ranking_lines.by_order.each do |r|
+  -%>
+    <tr class="<%= cycle("group_line_odd", "group_line_even", :name => 'group_lines') %>">
+      <td><%= pos %></td>
+      <td class="group_name" id="id_participant_<%= r.participant.id %>" ><%= r.participant %></td>
+      <td><%= r.points %></td>
+      <td><%= r.win + r.draw + r.lose %></td>
+      <td><%= r.win %></td>
+      <td><%= r.draw %></td>
+      <td><%= r.lose %></td>
+      <td><%= r.plus %></td>
+      <td><%= r.minus %></td>
+      <td><%= r.diff %></td>
+    </tr>
+  <%
+    pos = pos + 1
+   end
+   -%>
+</table>

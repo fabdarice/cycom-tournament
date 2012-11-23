@@ -1,0 +1,15 @@
+<%= form_for(@ranking) do |f| %>
+  <%= render 'shared/error_messages', :target => @ranking %>
+
+  <%= f.hidden_field :tournament_id %>
+  <%= f.hidden_field :round %>
+  <%= f.text_field :win_points %>
+  <%= f.text_field :draw_points %>
+  <%= f.text_field :lose_points %>
+  <%= f.text_field :groups_number %>
+  <%= f.text_field :qualified %>
+  <%= f.text_field :games_number %>
+  <%= f.text_field :best_of %>
+  <%= f.text_field :state %>
+  <%= f.submit @ranking.new_record? ? t("validate.new") : t("validate.edit") %>
+<% end %>

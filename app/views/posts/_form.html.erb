@@ -1,0 +1,7 @@
+<%= form_for(@post) do |f| %>
+  <%= f.error_messages %>
+    <%= f.text_field :title %>
+    <%= f.text_area :content %>
+    <%= f.datetime_select :date %>
+    <%= f.submit @post.new_record? ? t("validate.new") : t("validate.edit") %>
+<% end %>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  game_id: 1
+  game_round: 1
+  first_score: 1
+  second_score: 1
+  starts_at: 2010-05-13 21:53:29
+  ends_at: 2010-05-13 21:53:29
+  state: MyString
+
+two:
+  game_id: 1
+  game_round: 1
+  first_score: 1
+  second_score: 1
+  starts_at: 2010-05-13 21:53:29
+  ends_at: 2010-05-13 21:53:29
+  state: MyString

@@ -1,0 +1,8 @@
+<%= form_for(@branch) do |f| %>
+  <%= render "shared/error_messages", :target => @branch %>
+  <%= f.text_field :name %>
+  <%= f.text_field :abbreviation %>
+  <%= f.text_area :description %>
+  <%= f.submit @branch.new_record? ? t("validate.new") : t("validate.edit") %>
+<% end %>
+

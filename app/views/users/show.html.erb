@@ -1,0 +1,39 @@
+<% if false %>
+<% action_box do -%>
+	<% if (@user.id == session[:user_id])%>
+		<li><%= link_to t("user.edit"), { :controller => :users, :action => :edit, 
+			:user_id => @user.id }, :method => "get" %></li>
+	<% end -%>
+	<% if admin? -%>
+		<li><%= link_to t("admin.manage"),{ :controller => :users, :action => :manage_admin }, :class => "admin" %></li>
+		<% if (@user.id != session[:user_id])%>
+			<li><%= link_to t("user.edit"), { :controller => :users, :action => :edit, :user_id => @user.id }, :method => "get", :class => "admin"%></li>
+		<% end -%>
+	<% end -%>
+<% end -%>	
+<% end %>
+
+<%= h2 "#{t "user.show"} #{@user.nickname}"%>
+
+<ul>
+  <li><%= t "activerecord.attributes.user.first_name" %>: <%= @user.first_name %>
+  <li><%= t "activerecord.attributes.user.last_name" %>: <%= @user.last_name %></li>
+  <li><%= t "activerecord.attributes.user.email" %>: <%= @user.email %></li>
+  <li><%= t "user.age" %>: <%= (Date.today.year - @user.birthdate.year) - ((Date.today.yday < @user.birthdate.yday) ? 1 : 0) %> ans</li>
+</ul>
+
+<%= h2 t("team.name") unless @branches.empty? %>
+
+<% @branches.each_pair do |branch, memberships| -%>
+  <h3><%= branch.name %></h3>
+  <ul>
+  <% memberships.each do |membership| -%>
+    <li>
+      <%= link_to membership.team.name, team_path(membership.team) %>
+      <% if session[:user_id] == @user.id -%>
+	(<%= link_to t("team.leave"), membership_path(membership), :method => :delete  %>)
+      <% end -%>
+    </li>
+  <% end -%>
+  </ul>
+<% end -%>

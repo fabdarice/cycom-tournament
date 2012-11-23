@@ -1,0 +1,54 @@
+<%= h2 "#{t('team.team')} #{@team.name}" %>
+
+<p>
+  <b><%= t('activerecord.attributes.team.name') %>:</b>
+  <%=h @team.name %>
+</p>
+
+<p>
+  <b><%= t('activerecord.attributes.team.tag') %></b>
+  <%=h @team.tag %>
+</p>
+
+<p>
+  <b><%= t('activerecord.attributes.team.website') %></b>
+  <%=h @team.website %>
+</p>
+
+<p>
+  <b><%= t('activerecord.attributes.team.email') %></b>
+  <%=h @team.email %>
+</p>
+
+<p>
+  <b><%= t('activerecord.attributes.team.irc') %></b>
+  <%=h @team.irc %>
+</p>
+
+<p>
+  <b><%= t('activerecord.attributes.team.motto') %></b>
+  <%=h @team.motto %>
+</p>
+
+<p>
+  <b><%= t('activerecord.attributes.team.nationality') %></b>
+  <%=h @team.nationality %>
+</p>
+
+<%= h2 t('team.members') unless @branches.empty? %>
+
+<% @branches.each_pair do |branch, memberships| -%>
+  <h3><%= branch.name %></h3>
+  <ul>
+  <% memberships.each do |membership| -%>
+    <li>
+      <%= link_to membership.user.nickname, user_path(membership.user) %>
+      <% if membership.user.id == session[:user_id] -%>
+	(<%= link_to t('team.leave'), membership_path(membership), :method => :delete %>)
+      <% end -%>
+    </li>
+  <% end -%>
+  </ul>
+<% end -%>
+
+<%= render "memberships/new", :id => @team.id %>

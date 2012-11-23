@@ -1,0 +1,27 @@
+<%= h2 t("branch.index") %>
+
+<table>
+  <tr>
+    <th><%= t "activerecord.attributes.branch.name" %></th>
+    <th><%= t "activerecord.attributes.branch.abbreviation" %></th>
+    <th><%= t "activerecord.attributes.branch.description" %></th>
+  </tr>
+
+
+<% for branch in @branches %>
+  <tr>
+    <td><%=h branch.name %></td>
+    <td><%=h branch.abbreviation %></td>
+    <td><%=h branch.description %></td>
+    <td><%= link_to t("general.show"), branch %></td>
+    <% if admin? -%>
+      <td><%= link_to t("general.edit"), edit_branch_path(branch) %></td>
+      <td><%= link_to t("general.delete"), branch, :confirm => t("general.confirm"), :method => :delete %></td>
+    <% end -%>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to t("branch.new"), new_branch_path if admin? %>

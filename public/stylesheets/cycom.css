@@ -1,0 +1,692 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #d1d1d1	;
+}
+
+div#header {
+  border-top: 4px solid white;
+  border-bottom: 5px solid white;
+  height: 170px;
+  background: url("/images/header.png") repeat-x;
+}
+
+div#header h1 {
+  background-attachment:fixed;
+  background: url("/images/logo3.png") center no-repeat;
+  height: 170px;
+  width: 65%;
+  font-size: 0;
+}
+
+div#header h1 a {
+	display: block;
+	height: 100%;
+}
+
+div#login {
+  position: absolute;
+  top: 4px;
+  right: 50px;
+  background: white;
+  font-family: verdana, sans-serif;
+  font-size: 11pt;
+}
+
+div#login input[type=text],
+div#login input[type=password],
+div#login input[type=submit]
+{
+  width: 100px;
+  border: 1px solid #182c33;
+  font-family: verdana, sans-serif;
+  font-size: 8pt;
+}
+
+div#login input[type=submit]
+{
+  color: white;
+  background: #182c33;
+  font-weight: bold;
+}
+
+div#login-content {
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #182c33;
+}
+
+div#login-content a {
+  color: #ff7c02;
+  text-decoration: none;
+}
+
+div#login-content a:hover{
+  text-decoration: underline;
+}
+
+form#login-form-head
+{
+  margin-bottom: 0;
+}
+
+div#login-bottom {
+  height: 10px;
+  background: url("/images/login_bl.png") no-repeat left;
+}
+
+div#login-bottom div{
+  height: 10px;
+  background: url("/images/login_br.png") no-repeat right;
+}
+
+ul#menu-top {
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 143px;
+  right: 50px;
+  list-style-type: none;
+}
+
+ul#menu-top li {
+  display: inline;
+  float: left;
+  margin-left: 5px;
+}
+
+ul#menu-top a {
+  padding-top: 4px;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: block;
+  background: white;
+  height: 25px;
+  color: #182c33;
+  text-decoration: none;
+  font-family: verdana, sans-serif;
+  font-size: 11pt;
+  border-top: 2px solid #02808A;
+  border-right: 1px solid #02808A;
+}
+
+ul#menu-top a:hover {
+  border-top: 2px solid #FF7C02;
+  border-right: 1px solid #FF7C02;
+}
+
+div#menu {
+  float: left;
+  margin-left: 20px;
+  margin-top: 20px;
+  width: 250px;
+  background: white;
+  border: 1px solid #182c33;
+}
+
+div#menu ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+div#menu  h2 {
+  font-family: verdana, sans-serif;
+  font-size: 10pt;
+  background: url("/images/menu_head.png") repeat-x;
+  color: white;
+  padding-left: 10px;
+  line-height: 21px;
+  height: 23px;
+  margin: 0;
+}
+
+div#menu a {
+  font-family: verdana, sans-serif;
+  font-size: 10pt;
+  text-decoration: none;
+  display: block;
+  color: #182c33;
+  padding-left: 20px;
+}
+
+div#menu a:hover {
+  background: #d1d1d1;
+}
+
+div#main {
+  background: white;
+  margin-top: -1px;
+  margin-left: 300px;
+  margin-right: 20px;
+  padding-top: 35px;
+  padding-bottom: 20px;
+  border-right: 1px solid #182c33;
+  border-left: 1px solid #182c33;
+  border-bottom: 1px solid #182c33;
+  overflow: auto;
+}
+
+div#flash-infos,
+div#flash-ok,
+div#flash-ko,
+div#errorExplanation {
+  font-family: verdana, sans-serif;
+  font-size: 10pt;
+  margin-top: 1px;
+  background-attachment:fixed;
+  padding-left: 60px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+div#flash-infos {
+  border-top: 1px solid #365690;
+  border-bottom: 1px solid #365690;
+  background: #98b1b2 url("/images/flash_infos.png") no-repeat 30px;
+  color: #365690;
+}
+
+div#flash-ok {
+  border-top: 1px solid #232b19;
+  border-bottom: 1px solid #232b19;
+  background: #bed3a6 url("/images/flash_ok.png") no-repeat 30px;
+  color: #232b19;
+}
+
+div#flash-ko,
+div#errorExplanation {
+  border-top: 1px solid #c85252;
+  border-bottom: 1px solid #c85252;
+  background: #f8d5d5 url("/images/flash_ko.png") no-repeat 30px;
+  color: #c85252;
+}
+
+div#errorExplanation h2 {
+  display: none;
+}
+
+div#content {
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family: verdana, sans-serif;
+  font-size: 10pt;
+  color: #182c33;
+  clear: both;
+  overflow: auto;
+}
+
+div#content form {
+  background: #e7e7e7;
+  width: 80%;
+  margin: auto;
+  padding: 10px;
+}
+
+div#content form div {
+  margin-bottom: 5px;
+  overflow: auto;
+}
+
+div#content form label {
+  display: block;
+  float: left;
+  width: 150px;
+  text-align: right;
+  clear: both;
+}
+
+div#content form label span.help
+{
+  display: block;
+  font-style: italic;
+  font-size: 8pt;
+  color: #666666;
+}
+
+div#content form input[type=submit] {
+  margin-left: 170px;
+  color: white;
+  background: #182c33;
+  font-weight: bold;
+}
+
+div#content form input {
+  margin-left: 20px;
+  border: 1px solid #182c33;
+  width: 300px;
+}
+
+div#content form textarea {
+  margin-left: 20px;
+  border: 1px solid #182c33;
+  width: 300px;
+}
+
+div#content form select {
+  margin-left: 20px;
+}
+
+div#content form div.fieldWithErrors input,
+div#content form div.fieldWithErrors textarea
+{
+  border: 1px solid red;
+}
+
+div#content form div.long select
+{
+  width: 300px;
+  height: 25px;
+}
+
+div#content h2 {
+  font-family: verdana, sans-serif;
+  font-size: 14pt;
+  padding-left: 50px;
+  color: #182c33;
+  margin-top: 30px;
+  border-top: 1px solid #182c33;
+}
+
+div#content h2 div{
+  margin-top: -15px;
+}
+
+div#content h2 div span {
+  background: white;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+div#middle {
+  border-top: 1px solid #182c33;
+}
+
+a {
+  color: #ff7c02;
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+/*************************************************
+   ***** user/index table styles
+   *************************************************/
+
+th#userNickname,
+th#userFirstName,
+th#userLastName {
+  width: 25%;
+}
+
+/*************************************************
+   ***** Groups
+   *************************************************/
+
+table.group
+{
+  border-spacing: 0;
+}
+
+table.group td
+{
+  text-align: center;
+  width: 30px;
+}
+
+table.group th
+{
+  text-align: center;
+}
+
+table.group th.group_name
+{
+  text-align: left;
+}
+
+table.group td.group_name
+{
+  text-align: left;
+  width: 200px;
+}
+
+tr.group_line_even
+{
+  background-color: #DDDDDD;
+}
+
+div.group_game
+{
+  width: 45%;
+  float: left;
+  border-bottom: 1px solid #CCCCCC;
+  margin-bottom: 5px;
+  margin-right: 5%;
+}
+
+div.group_game ul
+{
+  margin: 0;
+  padding: 3px;
+  list-style-type: none;
+}
+
+div.group_game ul.group_game_names
+{
+  float: left;
+  width: 100px;
+}
+
+div.group_game ul.group_game_scores
+{
+  text-align: center;
+}
+
+div.group_game div.infos
+{
+  text-align: right;
+  padding-top: 10px;
+  color: #BBBBBB;
+}
+
+div.group_game a
+{
+  overflow: auto;
+  display: block;
+  float: left;
+  width: 20px;
+}
+
+div.group_game a:hover
+{
+  background-color: #DDDDDD;
+  text-decoration: none;
+}
+
+table.group_game td
+{
+  width: 20px;
+  text-align: center;
+}
+
+table.group_game td.group_game_name
+{
+  text-align: left;
+  width: 100px;
+}
+
+/*************************************************
+   ***** Trees
+   *************************************************/
+
+table.tree
+{
+  border-spacing: 0;
+}
+
+table.tree tr
+{
+  height: 20px;
+}
+
+table.tree td.tree_line
+{
+  padding: 0;
+  width: 0;  
+  border-right: 1px solid black;
+}
+
+table.tree td.tree_empty
+{
+  width: 0;
+  padding: 0;
+}
+
+table.tree td.tree_participant
+{
+  background-color: #EEEEEE;
+  width: 170px;
+}
+
+table.tree td
+{
+  padding-left: 10px;
+}
+
+table.tree a
+{
+  overflow: auto;
+  display: block;
+  float: left;
+  margin-right: 4px;
+  font-size: 8pt;
+  padding-top: 2px;
+}
+
+table.tree a:hover
+{
+  background-color: #DDDDDD;
+  text-decoration: none;
+}
+
+table.tree div.infos
+{
+  text-align: right;
+  color: #BBBBBB;
+}
+
+div.final_game
+{
+  margin-bottom: 5px;
+  margin-right: 5%;
+  overflow: auto;
+}
+
+div.final_game ul
+{
+  margin: 0;
+  padding: 3px;
+  list-style-type: none;
+}
+
+div.final_game ul.final_game_names
+{
+  float: left;
+  width: 100px;
+}
+
+div.final_game ul.final_game_scores
+{
+  text-align: center;
+}
+
+div.final_game div.infos
+{
+  text-align: right;
+  padding-top: 10px;
+  color: #BBBBBB;
+}
+
+div.final_game a
+{
+  overflow: auto;
+  display: block;
+  float: left;
+  width: 20px;
+}
+
+div.final_game a:hover
+{
+  background-color: #DDDDDD;
+  text-decoration: none;
+}
+
+
+ul#action-box
+{
+  background-color: #e7e7e7;
+  border: 1px solid #182c33;
+  margin-top: 5px;
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  list-style-type: none;
+  overflow: auto;
+}
+
+ul#action-box li
+{
+  margin: 0;
+  padding: 0;
+}
+
+ul#action-box a
+{
+  display: block;
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 4px;
+  height: 20px;
+  background-color: #182c33;
+  color: #FFA500;
+  font-weight: bold;
+  font-size: 8pt;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+ul#action-box a:hover
+{
+  text-decoration: none;
+}
+
+ul#action-box a.admin
+{
+  background-color: #0691BC;
+  color: white;
+}
+
+div#content form.round_edit
+{
+  display: block;
+  float: left;
+  width: 95%;
+  margin:0;
+  padding: 0;
+  height: 30px;
+  margin-bottom: 4px;
+  padding-top: 5px;
+}
+
+div#content form.round_edit input
+{
+  margin: 0;
+  width: 25px;
+  padding-left: 2px;
+}
+
+div#content form.round_edit label
+{
+  float: none;
+  display: inline;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+div#content form.round_edit input[type=submit]
+{
+  margin: 0;
+  padding-left: 2px;
+  width: auto;
+}
+
+div#content form.tree_round_edit
+{
+  width: 160px;
+  margin:0;
+  padding: 0;
+  height: 20px;
+  margin-left: -10px;
+}
+
+div#content form.tree_round_edit input
+{
+  display: block;
+  float: left;
+  margin: 0;
+  width: 25px;
+  padding-left: 2px;
+  margin-right: 5px;
+}
+
+div#content form.tree_round_edit label
+{
+  display: block;
+  width: auto;
+  float: left;
+  clear: none;
+  margin-left: 1px;
+  margin-right: 7px;
+  margin-top: 1px;
+}
+
+div#content form.tree_round_edit input[type=checkbox]
+{
+  margin-top: 2px;
+}
+
+div#content form.tree_round_edit input[type=hidden]
+{
+  display: none;
+}
+
+td.game_table
+{
+	border : 1px solid black;
+}
+
+td.game_table_highlight
+{
+	border : 1px dotted black;
+}
+
+/*************************************************
+   ***** Order
+   *************************************************/
+
+.cart_content img 
+{
+	border:none !important;
+}
+
+.cart_content a
+{
+	display:inline !important;
+	padding:0 !important;
+}
+
+.cart_content
+{
+  font-family: verdana, sans-serif;
+  font-size: 10pt;
+  text-decoration: none;
+  display: block;
+  color: #182c33;
+  padding-left: 20px;
+}
+
+.sold
+{
+	color : gray;
+}
+
+div.container
+{
+  overflow: auto;
+}

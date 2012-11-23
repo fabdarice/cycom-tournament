@@ -1,0 +1,24 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+
+one:
+  playable_id: 1
+  playable_type: MyString
+  first_participant_id: 1
+  second_participant_id: 1
+  participant_type: MyString
+  state: MyString
+  starts_at: 2010-05-13 21:52:08
+  ends_at: 2010-05-13 21:52:08
+  best_of: 1
+
+two:
+  playable_id: 1
+  playable_type: MyString
+  first_participant_id: 1
+  second_participant_id: 1
+  participant_type: MyString
+  state: MyString
+  starts_at: 2010-05-13 21:52:08
+  ends_at: 2010-05-13 21:52:08
+  best_of: 1

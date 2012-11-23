@@ -1,0 +1,24 @@
+
+  <div id="tree_final" class="final_game">
+<% if tree_final -%>
+
+    <ul class="final_game_names">
+      <li><%= tree_final.first_participant %></li>
+      <li><%= tree_final.second_participant %></li>
+    </ul>
+    <% tree_final.rounds.each do |round| -%>
+      <% @round = round -%>
+      <a onClick="editScore(this);" class="right">
+        <% content_tag_for :ul, round, :class => "final_game_scores" do -%>
+          <li><%= round.first_score %></li>
+          <li><%= round.second_score %></li>
+        <% end -%>
+     </a>
+  <% end -%>
+  <div class="infos">
+    <%= @round.state %>
+  </div>
+<% end -%>
+  </div>
+
+

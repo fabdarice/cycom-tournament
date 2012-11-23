@@ -1,0 +1,12 @@
+
+<% div_for tree_game do -%>
+  <% tree_game.rounds.each do |round| -%>
+    <% @round = round -%>
+    <a onClick="editTreeScore(this);" id="round_<%= round.id %>">
+      <%= "#{round.first_score}/#{round.second_score}" %>
+    </a>
+  <% end -%>
+  <div class="infos">
+    <%= @round.state %>
+  </div>
+<% end -%>

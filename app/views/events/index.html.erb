@@ -1,0 +1,22 @@
+<% if false %>
+<% action_box do %>
+	<% if admin? %>
+		<li><%= link_to t("event.new"), new_event_path, :class => "admin" %></li>
+	<% end %>
+<% end %>
+<% end %>
+
+<% @events.each do |event| %>
+  <%= h2 event.name %>
+  <div>
+  	<%= "#{t("event.description")} : #{event.name}" %><br />
+	<%= "#{t("event.adress")} : #{event.address}" %><br />
+   	<%= "#{t("event.start")} : #{event.starts_at}" %><br />
+    <%= "#{t("event.end")} : #{event.ends_at}" %><br />
+	<%= link_to t("general.show"), event %>
+	<% if admin? %>
+		<%= link_to t("general.edit"), edit_event_path(event) %></td>
+		<%= link_to t("general.delete"), event, :confirm => t('general.confirm'), :method => :delete %></td>
+	<% end %>
+  </div>
+<% end %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  tournament_id: 1
+  tree_type: MyString
+  state: MyString
+  best_of: 1
+
+two:
+  tournament_id: 1
+  tree_type: MyString
+  state: MyString
+  best_of: 1

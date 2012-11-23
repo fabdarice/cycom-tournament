@@ -1,0 +1,24 @@
+<p>
+  <b>Title:</b>
+  <%= @post.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%=raw textilize(h @post.content) %>
+</p>
+
+<p>
+  <b>Author:</b>
+  <%= @post.author_id %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @post.date %>
+</p>
+
+<% if admin? -%>
+	<%= link_to t("general.edit"), edit_post_path(@post) %> |
+<% end -%>
+<%= link_to t("general.back"), posts_path %>

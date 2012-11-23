@@ -1,0 +1,113 @@
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+  <head>
+    <title>Cycom Tournament</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <%= stylesheet_link_tag "cycom" %>
+	<%= javascript_include_tag :defaults %>
+	<%= csrf_meta_tag %>
+  </head>
+  <body>
+
+    <div id="header">
+      <h1><%= link_to "Cycom Tournament", root_path %></h1>
+      <div id="login">			
+		<div id="login-content">
+	  		<% if logged_in? -%>
+	    		<%=t "session.welcome" %> <%= User.find(session[:user_id]).first_name %> -
+	    		<%= link_to "Deconnexion", logout_path %>
+	  		<% else -%>
+	    		<%= form_tag(login_path, { :id => 'login-form-head'}) do -%>
+	      			<%= link_to t("user.new"), new_user_path %>
+		  			<%= text_field_tag 'nickname', t("session.nickname"), :onfocus => "this.value = ''" %>
+	      			<%= password_field_tag 'password', 'Password', :onfocus => "this.value = ''" %>
+	      			<%= check_box_tag 'remember', 1, true %>
+	      			<%= label_tag 'remember', t("session.remember") %>
+	      			<%= submit_tag 'Login' %>
+	    		<% end -%>
+	  		<% end -%>
+		</div>
+		<div id="login-bottom"><div></div></div>
+      	</div>
+      	<ul id="menu-top">
+			<li><a href="#">News</a></li>
+			<li><a href="#"><%= t "menu.foods" %></a></li>
+  			<li><a href="#"><%= t("menu.profile") %></a></li>
+			<li><a href="#"><%= t "menu.teams" %></a></li>
+			<li><a href="#"><%= t "menu.events" %></a></li>
+			<li><a href="#"><%= t "menu.tournaments" %></a></li>
+		</ul>
+    </div>
+    <div id="middle">
+    	<div id="menu">
+			<h2>Mes informations</h2>
+			<ul>
+				<% if logged_in? -%>
+	  				<li><%= link_to t("information.myprofile"), @current_user %></li>
+					<li><a href="#"><%= t "information.myteams" %></a></li>
+	  			<% else -%>
+	  				<li><a href="#"><%= t("information.myprofile") %></a></li>
+	  			<% end -%>
+			</ul>
+			<% Tournament.all.each do |t| -%>
+	  			<h2><%= t.name %></h2>
+	  			<ul>
+					<li><%= link_to t('tournament.details'), t %>
+	    			<% t.rankings.each do |r| -%>
+	      				<li><a href="<%= ranking_path(r) %>"><%= t "menu.group" %> <%= r.round %></a></li>
+	    			<% end -%>
+	    			<% if t.tree -%>
+	      				<li><a href="<%= tree_path(t.tree) %>"><%= t "menu.tree" %></a></li>
+	    			<% end -%>
+	  			</ul>
+			<% end -%>
+<% if false %>
+			<% if (!@current_order.nil? && @current_order.articles.size > 0) %>
+	  			<h2><%= t("order.name") %></h2>
+				<table>
+	  				<% for article in @current_order.articles %>
+						<tr class="cart_content">
+							<td><%= article.food.name%></td>
+							<td>(<%= article.quantity %>)</td>
+							<td>
+								<div class="cart_content">
+									<%= link_to (image_tag ("add.png")), :controller => :foods, :action => :add_to_cart, :id => article.food.id %>
+									<%= link_to (image_tag ("delete.png")), :controller => :foods, :action => :remove_from_cart, :id => article.food.id %>
+								</div>
+							</td>
+							<td>
+								<div class="cart_content">
+								<%= link_to (image_tag ("cross.png")), :controller => :foods, :action => :delete_from_cart, :id => article.food.id %>
+								</div>
+							</td>
+						</tr>
+					<% end %>
+				</table>
+				<% if (!@current_order.nil? && @current_order.state == 1) %>
+					<%= link_to t("order.validate_cart"), :controller => :orders, :action => :change_state_validate, :id => @current_order.id %>
+	  			<% else %>
+					<span class="cart_validate"><%= t("order.validated_cart") %></span>
+				<% end -%>
+			<% end -%>
+<% end %>
+		</div>
+
+      	<div id="main">
+			<% unless flash[:infos].nil? %>
+	  			<div id="flash-infos"><%= flash[:infos] %></div>
+			<% end -%>
+			<% unless flash[:valid].nil? %>
+	  			<div id="flash-ok"><%= flash[:valid] %></div>
+			<% end -%>
+			<% unless flash[:error].nil? %>
+	  			<div id="flash-ko"><%= flash[:error] %></div>
+			<% end -%>
+			<div id="content">
+	  			<%= yield %>
+			</div>
+      	</div>
+	</div>
+</body>
+</html>

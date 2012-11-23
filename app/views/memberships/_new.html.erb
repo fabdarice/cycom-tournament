@@ -1,0 +1,11 @@
+<% if logged_in? and !Branch.all.empty? -%>
+  <%= h2 t("team.join") %>
+
+  <%= form_tag :controller => :memberships, :action => :create, :id => id do -%>
+    <%= label_tag 'password', t("activerecord.attributes.user.password") %>
+    <div class="input"><%= password_field_tag 'password' %></div>
+    <%= label_tag 'branch_id', t("branch.branch") %>
+    <div class="input"><%= select_tag 'branch_id', options_from_collection_for_select(Branch.all, "id", "name") %></div>
+    <div class="input"><%= submit_tag t("validate.join") %></div>
+  <% end -%>
+<% end -%>

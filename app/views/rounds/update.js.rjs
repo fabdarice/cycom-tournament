@@ -1,0 +1,34 @@
+if @round.game.playable.class.name == "Group"
+   page.visual_effect :blindUp, "round_edit_#{@round.id}", :duration => 0.2
+   page.remove "round_edit_#{@round.id}"
+   page.replace "game_#{@round.game.id}", :partial => "games/game", :object => @round.game
+   page.visual_effect :highlight, "game_#{@round.game.id}"
+   page.replace 'group', :partial => "groups/show", :locals => { :ranking_lines => @round.game.playable.ranking_lines } unless @round.game.is_not_done?
+   page.visual_effect :highlight, "group" unless @round.game.is_not_done?
+elsif @round.game.playable.position == 1
+   page.visual_effect :blindUp, "round_edit_#{@round.id}", :duration => 0.2
+   page.remove "round_edit_#{@round.id}"
+   page.replace "tree_final", :partial => "games/tree_final", :object => @round.game
+   page.visual_effect :highlight, "tree_final"
+else
+   page.remove "round_edit_#{@round.id}"
+   page.replace "game_#{@round.game.id}", :partial => "games/tree_game",
+   :object => @round.game
+   page.visual_effect :highlight, "game_#{@round.game.id}"
+   unless @round.game.is_not_done?
+     page.replace "tree_winner", :partial => "trees/tree",
+      :locals => {
+        :tree => prepare_winner_tree(@round.game.playable.tree.tree_positions.winner.by_position),
+        :type => "tree_winner"
+      }
+      page.replace "tree_loser", :partial => "trees/tree",
+      :locals => {
+        :tree => prepare_loser_tree(@round.game.playable.tree.tree_positions.loser.by_nposition),
+        :type => "tree_loser"
+      } if @round.game.playable.tree.tree_type == Tree::DOUBLE
+      if @final and @final.game
+      	 page.replace "tree_final", :partial => "games/tree_final", :object => @final.game
+         page.visual_effect :highlight, "tree_final"
+      end
+   end
+end

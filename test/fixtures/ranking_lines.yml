@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  group_id: 1
+  participant_id: 1
+  participant_type: MyString
+  points: 1
+  win: 1
+  draw: 1
+  lose: 1
+  plus: 1
+  minus: 1
+  diff: 1
+
+two:
+  group_id: 1
+  participant_id: 1
+  participant_type: MyString
+  points: 1
+  win: 1
+  draw: 1
+  lose: 1
+  plus: 1
+  minus: 1
+  diff: 1

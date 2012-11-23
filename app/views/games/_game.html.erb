@@ -1,0 +1,21 @@
+<% c = cycle("left", "right") -%>
+
+
+<% content_tag_for :div, game, :class => "group_game" do -%>
+<ul class="group_game_names">
+  <li><%= game.first_participant %></li>
+  <li><%= game.second_participant %></li>
+</ul>
+<% game.rounds.each do |round| -%>
+  <% @round = round -%>
+  <a onClick="editScore(this);" class="<%= c %>">
+    <% content_tag_for :ul, round, :class => "group_game_scores" do -%>
+    <li><%= round.first_score %></li>
+    <li><%= round.second_score %></li>
+<% end -%>
+</a>
+<% end -%>
+<div class="infos">
+  <%= @round.state %>
+</div>
+<% end -%>

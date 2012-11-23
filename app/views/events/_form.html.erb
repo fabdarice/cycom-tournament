@@ -1,0 +1,12 @@
+
+<%= form_for(@event) do |f| %>
+  <%= render 'shared/error_messages', :target => @event %>
+
+  <%= f.text_field :name %>
+  <%= f.text_area :address %>
+  <%= f.text_area :description %>
+  <%= f.datetime_select :starts_at %>
+  <%= f.datetime_select :ends_at %>
+
+  <%= f.submit @event.new_record? ? t("validate.new") : t("validate.edit") %>
+<% end %>

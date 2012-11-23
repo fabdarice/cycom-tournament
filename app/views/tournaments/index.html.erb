@@ -1,0 +1,26 @@
+<% if false %>
+<% action_box do -%>
+	<% if admin? -%>
+		<li><%= link_to t("activerecord.attributes.tournament.new"), new_tournament_path, :class => "admin" %></li>
+	<% end -%>
+<% end -%>
+<% end -%>
+
+<% @tournaments.each do |tournament| %>
+  <%= h2 tournament.name %>
+  <div>
+  	<%= "#{t("activerecord.attributes.tournament.event_id")} : #{tournament.event_id}" %><br />
+	<%= "#{t("activerecord.attributes.tournament.branch_id")} : #{tournament.branch_id}" %><br />
+	<%= "#{t("activerecord.attributes.tournament.name")} : #{tournament.name}" %><br />
+	<%= "#{t("activerecord.attributes.tournament.max_participants")} : #{tournament.max_participants}" %><br />
+	<%= "#{t("activerecord.attributes.tournament.participants_type")} : #{tournament.participants_type}" %><br />
+   	<%= "#{t("activerecord.attributes.tournament.starts_at")} : #{tournament.starts_at}" %><br />
+    <%= "#{t("activerecord.attributes.tournament.ends_at")} : #{tournament.ends_at}" %><br />
+	<%= "#{t("activerecord.attributes.tournament.state")} : #{tournament.state}" %><br />
+	<%= link_to t("general.show"), tournament %>
+	<% if admin? -%>
+		<%= link_to t("general.edit"), edit_tournament_path(tournament) %>
+		<%= link_to t("general.delete"), tournament, :confirm => t('general.confirm'), :method => :delete %></td>
+	<% end -%>	
+  </div>
+<% end -%>

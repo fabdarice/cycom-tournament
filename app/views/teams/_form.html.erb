@@ -1,0 +1,14 @@
+<% form_for(@team) do |f| %>
+  <%= render 'shared/error_messages', :target => @team %>
+  <%= f.text_field :name %>
+  <%= f.text_field :tag %>
+  <%= f.text_field :website %>
+  <%= f.text_field :email %>
+  <%= f.text_field :irc %>
+  <%= f.text_field :motto %>
+  <%= f.text_field :nationality %>
+  <%= f.password_field :password %>
+  <%= f.password_field :password_confirmation %>
+
+  <%= f.submit @team.new_record? ? t('validate.new') : t('validate.edit') %>
+<% end %>

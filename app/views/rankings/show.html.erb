@@ -1,0 +1,14 @@
+<%= action_box do -%>
+	<% if admin? -%>
+		<li><%= link_to t("game.generate"), { :controller => :rankings,
+   				:action => :generate_games, :id => @ranking.id}, :class => "admin" %></li>
+	<% end -%>
+<% end -%>
+
+<ul>
+  <% @ranking.groups.each do |group|-%>
+  	<%= h2 "#{t("group.group")} #{group.name}"%>
+    <%= render :partial => "groups/show", :locals => { :ranking_lines => group.ranking_lines } %>
+	<%= link_to t("group.details"), group %>
+  <% end -%>
+</ul>

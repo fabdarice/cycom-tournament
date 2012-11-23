@@ -1,0 +1,31 @@
+<%= javascript_include_tag "games" %>
+
+<%= h2 "#{@tree.tournament.name} - Phase finale" %>
+
+<%= link_to "Initialiser l'arbre", :controller => :trees,
+    :action => :generate, :id => @tree.id %>
+
+<% if @tree.tree_type == Tree::DOUBLE and @final.game %>
+  <%= h2 "Grande Finale" %>
+  <div class="container">
+    <%= render :partial => "games/tree_final", :game => @final.game %>
+  </div>
+<% end -%>
+
+<%= h2 "Winner bracket" if @tree.tree_type == Tree::DOUBLE %>
+
+<%= render :partial => "tree",
+    :locals => {
+      :tree => prepare_winner_tree(@tree.tree_positions.winner.by_position),
+      :type => "tree_winner"
+    } %>
+
+<% if @tree.tree_type == Tree::DOUBLE -%>
+
+  <%= h2 "Loser Bracket" %>
+  <%= render :partial => "tree",
+      :locals => {
+	  :tree => prepare_loser_tree(@tree.tree_positions.loser.by_nposition),
+	  :type => "tree_loser"
+      } %>
+<% end %>

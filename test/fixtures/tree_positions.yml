@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  tree_id: 1
+  participant_id: 1
+  participant_type: MyString
+  position: 1
+  special: false
+
+two:
+  tree_id: 1
+  participant_id: 1
+  participant_type: MyString
+  position: 1
+  special: false

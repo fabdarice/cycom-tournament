@@ -1,0 +1,33 @@
+<% if false %>
+<% action_box do -%>
+	<% if !logged_in?%>
+		<li><%= link_to t("user.new"), { :controller => :users, :action => :new }, :method => "get" %></li>
+	<% end -%>
+	<% if admin? -%>
+		<li><%= link_to t("admin.manage"),{ :controller => :users, :action => :manage_admin }, :class => "admin" %></li>
+	<% end -%>
+<% end -%>	
+<% end %>
+
+<%= h2 t("user.index") %>
+
+<table>
+  <tr>
+    <th id="userNickname"><%= t "activerecord.attributes.user.nickname" %></th>
+    <th id="userFirstName"><%= t "activerecord.attributes.user.first_name" %></th>
+    <th id="userLastName"><%= t "activerecord.attributes.user.last_name" %><th>
+  </tr>
+<% for user in @users %>
+  <tr>
+    <td><%= user.nickname %></td>
+    <td><%= user.first_name %></td>
+    <td><%= user.last_name %></td>
+    <td><%= link_to t("general.show"), user %></td>
+    <% if admin? -%>
+      <td><%= link_to t("general.edit"), edit_user_path(user) %></td>
+      <td><%= link_to t("general.delete"), user, :confirm => t("general.confirm"), :method => :delete %></td>
+    <% end -%>
+  </tr>
+<% end %>
+</table>
+

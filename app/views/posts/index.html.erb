@@ -1,0 +1,19 @@
+<% if false %>
+<% action_box do -%>
+	<% if admin? -%>
+		<li><%= link_to t("post.new"), new_post_path, :class => "admin" %></li>
+	<% end -%>
+<% end -%>
+<% end %>
+
+<% @posts.each do |post| %>
+  <%= h2 post.title%>
+  <div>
+  	<%=raw textilize(h post.content) %>
+  </div>
+  Post by <%= post.author.nickname %> at <%= post.date %>
+  <% if admin? %>
+  	<%= link_to t("general.edit"), :controller => :posts, :action => :edit, :id => post.id %>
+  	<%= link_to t("general.delete"), {:controller => :posts, :action => :destroy, :id => post.id}, :confirm => "Are you sure?", :method => :delete %>
+  <% end %>
+<% end -%>

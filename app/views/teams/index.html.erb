@@ -1,0 +1,31 @@
+<% if false %>
+<% action_box do -%>
+	<% if logged_in? -%>
+			<li><%= link_to t("team.new"), { :controller => :teams,
+					:action => :new}, :method => "get" %></li>
+		<% end -%>
+<% end -%>
+<% end -%>
+
+<%= h2 t('team.index') %>
+
+<table>
+  <tr>
+    <th><%= t('activerecord.attributes.team.name') %></th>
+    <th><%= t('activerecord.attributes.team.tag') %></th>
+  </tr>
+
+<% for team in @teams %>
+  <tr>
+    <td><%= team.name %></td>
+    <td><%= team.tag %></td>
+    <td><%= link_to t("general.show"), team %></td>
+    <% if admin? -%>
+      <td><%= link_to t("general.edit"), edit_team_path(team) %></td>
+      <td><%= link_to t("general.delete"), team, :confirm => t('general.confirm'), :method => :delete %></td>
+    <% end -%>
+  </tr>
+<% end %>
+</table>
+
+<br />

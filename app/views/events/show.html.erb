@@ -1,0 +1,45 @@
+<% if false %>
+<% action_box do -%>
+	<% if admin? -%>
+		<li><%= link_to t("event.edit"), edit_event_path(@event),
+				:class => "admin" %></li>
+		<li><%= link_to t("tournament.add"), { :controller => :tournaments,
+    			:action => :new, :event_id => @event.id },
+				:class => "admin" %></li>
+	<% end -%>
+<% end -%>
+<% end -%>
+
+<p>
+  <b><%= t "activerecord.attributes.event.name" %>:</b>
+  <%=h @event.name %>
+</p>
+
+<p>
+  <b><%= t "activerecord.attributes.event.address" %>:</b>
+  <%=h @event.address %>
+</p>
+
+<p>
+  <b><%= t "activerecord.attributes.event.description" %>:</b>
+  <%=h @event.description %>
+</p>
+
+<p>
+  <b><%= t "activerecord.attributes.event.starts_at" %>:</b>
+  <%=h @event.starts_at %>
+</p>
+
+<p>
+  <b><%= t "activerecord.attributes.event.ends_at" %>:</b>
+  <%=h @event.ends_at %>
+</p>
+
+<% unless @event.tournaments.empty? %>
+  <%= h2 t("tournament.name") %>
+  <ul>
+  <% @event.tournaments.each do |t| -%>
+    <li><%= link_to t.name, t %></li>
+  <% end %>
+  </ul>
+<% end %>
